@@ -1,8 +1,27 @@
-# puppet-dynamic_hosts [![Build Status](https://travis-ci.org/treydock/puppet-dynamic_hosts.png)](https://travis-ci.org/treydock/puppet-dynamic_hosts)
+# puppet-dynamic_hosts
 
-Puppet module to create dynamic host entries based on a system's local IP addresses.
+[![Build Status](https://travis-ci.org/treydock/puppet-dynamic_hosts.png)](https://travis-ci.org/treydock/puppet-dynamic_hosts)
 
-## Reference
+####Table of Contents
+
+1. [Overview - What is the dynamic_hosts module?](#overview)
+2. [Use Cases - Real world usage scenerios?](#use-cases)
+3. [Usage - Configuration and customization options](#usage)
+    * [Class: dynamic_hosts](#class-dynamic_hosts)
+    * [Define: dynamic_hosts::entry](#define-dynamic_hostsentry)
+    * [Function: find\_ip\_by_network](#function-find_ip_by_network)
+7. [Development - Guide for contributing to the module](#development)
+    * [Tests - Testing your configuration](#tests)
+
+## Overview
+
+The dynamic_hosts module lets you create dynamic host entries based on a system's IP addresses.
+
+## Use Cases
+
+
+
+## Usage
 
 ### Class: dynamic_hosts
 
@@ -78,12 +97,12 @@ Would return: false
 
 ## Development
 
-### Dependencies
+### Testing
+
+Testing requires the following dependencies:
 
 * rake
 * bundler
-
-### Unit testing
 
 Install gem dependencies
 
@@ -92,8 +111,6 @@ Install gem dependencies
 Run unit tests
 
     bundle exec rake ci
-
-### Vagrant system tests
 
 If you have Vagrant >= 1.2.0 installed you can run system tests
 
