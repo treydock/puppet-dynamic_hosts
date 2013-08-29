@@ -1,0 +1,6 @@
+<% @ip_networks.each do |ip_network| -%>
+<% if scope.function_has_ip_network([ip_network['network']]) -%>
+<%= ip_network['ip'] -%>
+<% break -%>
+<% end -%>
+<% end -%>
