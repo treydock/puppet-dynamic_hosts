@@ -15,3 +15,6 @@ task :ci => [
 # Disable puppet-lint checks
 PuppetLint.configuration.send("disable_80chars")
 PuppetLint.configuration.send("disable_class_inherits_from_params_class")
+
+# Ignore files outside this module
+PuppetLint.configuration.ignore_paths = ["vendor/**/*.pp", "spec/**/*.pp"]
