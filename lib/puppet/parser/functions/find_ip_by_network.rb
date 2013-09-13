@@ -1,4 +1,6 @@
 module Puppet::Parser::Functions
+  function('has_ip_network')
+
   newfunction(:find_ip_by_network, :type => :rvalue, :doc => <<-EOS
   
     EOS
