@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe 'dynamic_hosts::entry' do
-  include_context :defaults
-
-  let :facts do
-    default_facts
+  let :default_facts do
+    {
+      :interfaces => 'lo',
+      :network_lo => '127.0.0.0',
+    }
   end
+
+  let(:facts) { default_facts }
 
   let(:title) { 'example.local' }
 

@@ -5,7 +5,9 @@
 # Testing and development
 .vagrant/
 spec/fixtures/modules/
+spec/fixtures/manifests/
 .rspec_system/
+/Vagrantfile
 
 # Ruby and RVM
 .ruby-version

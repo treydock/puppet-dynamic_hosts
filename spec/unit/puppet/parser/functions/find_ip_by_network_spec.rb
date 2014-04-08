@@ -1,15 +1,16 @@
-#!/usr/bin/env ruby -S rspec
 require 'spec_helper'
 
 describe Puppet::Parser::Functions.function(:find_ip_by_network) do
 
-  let(:scope) do
-    PuppetlabsSpec::PuppetInternals.scope
-  end
+  let(:scope) { PuppetlabsSpec::PuppetInternals.scope }
 
   subject do
     function_name = Puppet::Parser::Functions.function(:find_ip_by_network)
     scope.method(function_name)
+  end
+
+  it 'should exist' do
+    Puppet::Parser::Functions.function('find_ip_by_network').should == "function_find_ip_by_network"
   end
 
   context "On Linux Systems" do

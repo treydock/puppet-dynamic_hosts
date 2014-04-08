@@ -1,15 +1,22 @@
-source "https://rubygems.org"
+source "http://rubygems.org"
+
+rakeversion = RUBY_VERSION =~ /^1.8/ ? "<10.2.0" : ">= 0"
 
 group :development, :test do
-  gem 'rake'
+  gem 'rake', rakeversion,      :require => false
+  gem 'rspec-puppet',           :require => false, :git => 'https://github.com/rodjek/rspec-puppet.git'
   gem 'puppetlabs_spec_helper', :require => false
-  gem 'puppet-lint', '~> 0.3.2'
-  gem 'travis-lint'
-  gem 'rspec-system-puppet', '~>2.0.0'
-  #  gem 'rspec-system-serverspec', '~>1.0.0'
-  # Needed to use latest serverspec gem
-  # PR submitted: https://github.com/puppetlabs/rspec-system-serverspec/pull/3
-  gem 'rspec-system-serverspec', :git => 'git://github.com/nagas/rspec-system-serverspec.git', :branch => 'serverspec/0.x'
+  gem 'puppet-lint',            :require => false
+  gem 'puppet-syntax',          :require => false
+  gem 'travis-lint',            :require => false
+  gem 'simplecov',              :require => false
+  gem 'coveralls',              :require => false
+end
+
+group :development do
+  gem 'beaker',                 :require => false, :git => 'https://github.com/puppetlabs/beaker', :ref => 'dbac20fe9'
+  gem 'beaker-rspec',           :require => false
+  gem 'vagrant-wrapper',        :require => false
 end
 
 if puppetversion = ENV['PUPPET_GEM_VERSION']
