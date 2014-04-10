@@ -9,7 +9,6 @@ describe 'dynamic_hosts' do
   end
 
   it { should create_class('dynamic_hosts') }
-  it { should contain_class('dynamic_hosts::params') }
 
   it { should have_dynamic_hosts__entry_resource_count(0) }
 
