@@ -22,11 +22,11 @@ The dynamic_hosts module lets you create dynamic host entries based on a system'
 
 ### Class: `dynamic_hosts`
 
-By default the class performs no actions.  The `dynamic\_hosts\_entries` top-scope variable can be used to define `dynamic_hosts::entry` resources.
+By default the class performs no actions.  The `dynamic_hosts_entries` top-scope variable can be used to define `dynamic_hosts::entry` resources.
 
     class { 'dynamic_hosts': }
   
-Example of a top-scope `dynamic\_hosts\_entries` variable
+Example of a top-scope `dynamic_hosts_entries` variable
 
     $dynamic_hosts_entries = {
       'example.local' => { 'ip_networks' => [
@@ -52,13 +52,13 @@ The class can be defined with the `entries` parameter to also create `dynamic_ho
 
 The Hash that is passed to create_resources to define `dynamic_hosts::entry` resources (defaults to an empty Hash).
 
-The `dynamic_hosts_entries` top-scope variable can be used to define this parameter.  The parameter's value takes presedence over the top-scope variable.
+The `dynamic_hosts_entries` top-scope variable can be used in place of this parameter.  The parameter's value takes presedence over the top-scope variable.
 
 ### Defined type: `dynamic_hosts::entry`
 
 Defines a /etc/hosts entry based on the `ip_networks` Hash.  If the system has an IP within the value of the `network` Hash element, then the `ip` value is assigned to the host entry.
 
-The following example creates a /etc/hosts entry for 'example.local' with the 'ip' value from the first hash with a matching 'network' value.
+The following example creates a /etc/hosts entry for *example.local* with the `ip` value from the first hash with a matching `network` value.
 
     dynamic_hosts::entry { 'example.local':
       ip_networks => [
@@ -99,27 +99,27 @@ Array of aliases for the /etc/hosts entry (defaults to undef).
 
 Controls the existance of the /etc/hosts entry (defaults to 'present').
 
-### Function: `find\_ip\_by_network`
+### Function: `find_ip_by_network`
 
 Returns the IP of the first `network` match found from an Array of Hashes.  Returns false if no match is found.
 
 Each hash must have an `ip` key and a `network` key.
 
-#### Examples for `find\_ip\_by_network` function
+#### Examples for `find_ip_by_network` function
 
 In these examples, the puppet client has eth0 with network 10.0.2.0 and lo with 127.0.0.0.
 
     $ip = find_ip_by_network({'ip' => '10.0.2.2', 'network' => '10.0.2.0'})
 
-Would return: '10.0.2.2'
+Would return: *10.0.2.2*
 
     $ip = find_ip_by_network({'ip' => '192.168.1.2', 'network' => '192.168.1.0'}, {'ip' => '1.1.1.1', 'network' => '127.0.0.0'})
 
-Would return: '1.1.1.1'
+Would return: *1.1.1.1*
 
     $ip = find_ip_by_network({'ip' => '192.168.1.2', 'network' => '192.168.1.0'})
 
-Would return: false
+Would return: *false*
 
 - *Type*: rvalue
 
@@ -154,7 +154,7 @@ Client2 networks:
 
 *Solution:*
 
-In LDAP set the hostname for the NFS automount to something like 'automount-nfs-home.local' then use this module to map that hostname to an IP based on the IPs available to each server.
+In LDAP set the hostname for the NFS automount to something like *automount-nfs-home.local* then use this module to map that hostname to an IP based on the IPs available to each server.
 
 The following would be defined in Puppet (this example is in YAML for readability).
 
@@ -166,13 +166,22 @@ The following would be defined in Puppet (this example is in YAML for readabilit
           - ip: '1.1.1.10'
             network: '127.0.0.0'
 
-In the example above 'Client1' would be assigned this host entry
+In the example above *Client1* would be assigned this host entry
 
     192.168.2.10  automount-nfs-home.local
 
 'Client2' would be assigned this host entry
 
     1.1.1.10 automount-nfs-home.local
+
+## Limitations
+
+This module has been built on and tested against Puppet 2.7 and higher.
+
+This module has been tested on:
+
+* CentOS 5/6
+* Scientific Linux 5/6
 
 ## Development
 
