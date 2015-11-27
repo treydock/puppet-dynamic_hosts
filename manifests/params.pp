@@ -1,6 +1,6 @@
 #
 class dynamic_hosts::params {
 
-  $entries = hiera_hash('dynamic_hosts::entries', {})
+  $entries = hiera_hash('dynamic_hosts_entries', {})
 
 }
