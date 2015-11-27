@@ -30,7 +30,7 @@ describe Puppet::Parser::Functions.function(:find_ip_by_network) do
     end
     
     it 'should return false if no matches' do
-      subject.call([[{'ip' => '1.1.1.1', 'network' => '0.0.0.0'}]]).should be_false
+      subject.call([[{'ip' => '1.1.1.1', 'network' => '0.0.0.0'}]]).should be false
     end
     
     it 'should raise a ParseError if there is less than 1 argument' do

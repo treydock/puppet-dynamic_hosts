@@ -25,10 +25,10 @@ define dynamic_hosts::entry (
 
   if $ip {
     host { "dynamic_hosts::entry ${name}":
-      ensure        => $ensure,
-      name          => $host_fqdn_real,
-      host_aliases  => $host_aliases_real,
-      ip            => $ip,
+      ensure       => $ensure,
+      name         => $host_fqdn_real,
+      host_aliases => $host_aliases_real,
+      ip           => $ip,
     }
   }
 

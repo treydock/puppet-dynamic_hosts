@@ -1,9 +1,9 @@
 # == Class: dynamic_hosts
 #
 # See README.md for more details.
-class dynamic_hosts ($entries  = undef) {
+class dynamic_hosts ($entries  = $dynamic_hosts::params::entries) inherits dynamic_hosts::params {
 
-  if $entries == undef {
+  if empty($entries) {
     $_entries = $::dynamic_hosts_entries
   } else {
     $_entries = $entries
